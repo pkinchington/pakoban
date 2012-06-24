@@ -1,26 +1,27 @@
 $('document').ready(function() {
-  alert('Building level...');
-
   // Read in the level data
   var level = parseLevel();
 
   // Work out how many tiles are needed in total to render the level
   var numOfTiles = level.width * level.height;
 
+  $('#level').css('height', level.height*tileWidth);
+  $('#level').css('width', level.width*tileWidth);
+
   // add the required number of tiles to the level
   buildLevel(numOfTiles);
 
   // setup the tiles with the correct classes for their type
-  setupLevel();
-}
+  setupLevel(level.data);
+});
 
 function parseLevel() {
   // Start with a fixed level. Replace this later with a levelCode
   // passed in after being read from somewhere.
-  var levelCode = 8x9:--WWWWW-WWWFFFW-WDPBFFW-WWWFBDW-WDWWBFW-WFWFDFWWWBFZBBDWWFFFDFFWWWWWWWWW;
+  var levelCode = '8x9:--WWWWW-WWWFFFW-WDPBFFW-WWWFBDW-WDWWBFW-WFWFDFWWWBFZBBDWWFFFDFFWWWWWWWWW';
 
   var data = levelCode.split(':'),
-      levelDims = levelData[0].split('x'),
+      levelDims = data[0].split('x'),
       levelWidth = parseInt(levelDims[0], 10),
       levelHeight = parseInt(levelDims[1], 10),
       levelData = data[1];
@@ -34,15 +35,15 @@ function parseLevel() {
 
 function buildLevel(numOfTiles) {
   for (var i = 0; i <= numOfTiles-1; i++) {
-    $('dev#level').append('<div />').addClass('tile');
+    $('div#level').append($('<div />').addClass('tile'));
   }
 }
 
-function setupLevel() {
+function setupLevel(levelData) {
 
 
   function getTileType (index) {
-    var tile = level.data[index];
+    var tile = levelData[index];
     switch (tile) {
       case '-':
         return 'blank';
@@ -71,9 +72,8 @@ function setupLevel() {
   }
 
   $('div.tile').each(function(index, tile) {
-    alert('index: '+index+', tile: '+tile);
     $(tile).addClass(getTileType(index));
-  }
+  });
 }
 
 function incrementMoveCount() {
