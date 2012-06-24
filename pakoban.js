@@ -1,22 +1,48 @@
+$('document').ready(function() {
+  alert('Building level...');
 
+  // Read in the level data
+  var level = parseLevel();
 
-function setupBoard() {
+  // Work out how many tiles are needed in total to render the level
+  var numOfTiles = level.width * level.height;
 
-  function parseLevel() {
-    // Start with a fixed level. Replace this later with a levelCode passed
-    // in after being read from somewhere.
-    var levelCode = 8x9:--WWWWW-WWWFFFW-WDPBFFW-WWWFBDW-WDWWBFW-WFWFDFWWWBFZBBDWWFFFDFFWWWWWWWWW;
+  // add the required number of tiles to the level
+  buildLevel(numOfTiles);
 
-    var data = levelCode.split(':'),
-        levelDims = levelData[0].split('x'),
-        boardWidth = parseInt(levelDims[0], 10),
-        boardHeight = parseInt(levelDims[1], 10),
-        levelData = data[1];
+  // setup the tiles with the correct classes for their type
+  setupLevel();
+}
+
+function parseLevel() {
+  // Start with a fixed level. Replace this later with a levelCode
+  // passed in after being read from somewhere.
+  var levelCode = 8x9:--WWWWW-WWWFFFW-WDPBFFW-WWWFBDW-WDWWBFW-WFWFDFWWWBFZBBDWWFFFDFFWWWWWWWWW;
+
+  var data = levelCode.split(':'),
+      levelDims = levelData[0].split('x'),
+      levelWidth = parseInt(levelDims[0], 10),
+      levelHeight = parseInt(levelDims[1], 10),
+      levelData = data[1];
+
+  return {
+    'width': levelWidth,
+    'height': levelHeight,
+    'data': levelData
+  };
+}
+
+function buildLevel(numOfTiles) {
+  for (var i = 0; i <= numOfTiles-1; i++) {
+    $('dev#level').append('<div />').addClass('tile');
   }
+}
+
+function setupLevel() {
+
 
   function getTileType (index) {
-    var tile;
-
+    var tile = level.data[index];
     switch (tile) {
       case '-':
         return 'blank';
@@ -45,6 +71,7 @@ function setupBoard() {
   }
 
   $('div.tile').each(function(index, tile) {
+    alert('index: '+index+', tile: '+tile);
     $(tile).addClass(getTileType(index));
   }
 }
@@ -56,15 +83,14 @@ function incrementMoveCount() {
 }
 
 // global variables for one tile
-var width = 46;
-var border = 2;
+var tileWidth = 50;
 
 // utility function to translate an x,y tile position
 // to a pixel position
 function getPixels(x, y) {
   return {
-    'top': (y * (width+border))+'px',
-    'left': (x * (width+border))+'px'
+    'top': (y * tileWidth)+'px',
+    'left': (x * tileWidth)+'px'
   };
 }
 
@@ -72,9 +98,8 @@ function getPixels(x, y) {
 // to a tile position
 function getCoords(top, left) {
   return {
-    'x': left / (width+border),
-    'y': top / (width+border)
+    'x': left / tileWidth,
+    'y': top / tileWidth
   };
 }
-
 
