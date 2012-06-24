@@ -6,12 +6,12 @@
 Steal the checkers board code from the Codecademy lessons and mung it into something that can be used to draw a level.
 How to define/load level layout? String where W=Wall, F=Floor, P=Player Start Position, B=Box, D=Destination, Z=Box at destination, -=Blank?
 
---WWWWW-/n
-WWWFFFW-/n
+--WWWWW-
+WWWFFFW-
 WDPBFFW-
 WWWFBDW-
-WDWWBFW-<br />
-WFWFDFWW<br>
+WDWWBFW-
+WFWFDFWW
 WBFZBBDW
 WFFFDFFW
 WWWWWWWW
