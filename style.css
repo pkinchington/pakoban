@@ -28,4 +28,35 @@ div.tile {
   border-color: #444;
 }
 
+div.title.blank {
+  background-color: #fff;
+}
+
+div.tile.wall {
+  background-color: #666;
+}
+
+div.tile.floor {
+  background-color: #123;
+}
+
+div.tile.player {
+  background-color: #123;
+}
+
+div.title.box {
+  background-color: #123;
+}
+
+div.title.destination {
+  background-color: #f48;
+}
+
+div.title.boxcomplete {
+  background-color: #80f;
+}
+
+div#panel {
+  float: right;
+}
 
