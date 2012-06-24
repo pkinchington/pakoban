@@ -1,0 +1,31 @@
+div#game {
+  position: relative;
+}
+
+div#board {
+  float: left;
+
+  height: 382px;
+  width: 382px;
+
+  border-style: solid;
+  border-width: 10px;
+  border-color: #deb887;
+}
+
+div.tile {
+  float: left;
+
+  position: relative;
+
+  width: 46px;
+  height: 46px;
+  border-width: 2px;
+
+  border-right-style: solid;
+  border-bottom-style: solid;
+
+  border-color: #444;
+}
+
+
