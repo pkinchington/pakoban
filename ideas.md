@@ -28,13 +28,13 @@ Replace the string method of storing a level layout with a method based on an ar
 It's a much better idea as the dimensions of the level are defined by the dimensions of the array. Something like:
 
 ["--WWWWW-",
- "WWWFFFW-",
- "WoP#FFW-",
- "WWWF#oW-",
- "WDWW#FW-",
- "WFWFoFWW",
- "W#FX##oW",
- "WFFFDFFW",
+ "WWW   W-",
+ "WoP#  W-",
+ "WWW #oW-",
+ "WDWW# W-",
+ "W W o WW",
+ "W# X##oW",
+ "W   D  W",
  "WWWWWWWW"]
 
 Also much easier to look at (i.e. printing to console for debugging) and see the layout of the level.
